@@ -4,7 +4,11 @@ from forms import RegistrationForm
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = "my-secret-key"
+import os
+
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-key")
+
+
 
 
 @app.route('/', methods=['GET', 'POST'])
